@@ -12,19 +12,14 @@ a place. The page applies them.
 ```bash
 npm install
 cp .env.example .env   # add TYPESAFE_API_KEY
-npm run dev            # the builder,    http://localhost:5173
-npm run reference      # a finished page, http://localhost:5174/reference.html
+npm run dev            # http://localhost:5173
 ```
-
-The reference page is a second product with its own copy. It shares only the
-design system with the builder.
 
 ## Scripts
 
 | Script | What it does |
 | --- | --- |
 | `npm run dev` | Start the builder |
-| `npm run reference` | Start the reference page |
 | `npm run build` | Type-check and build |
 | `npm run lint` | Run oxlint |
 | `npm run check` | Run the command self-checks |

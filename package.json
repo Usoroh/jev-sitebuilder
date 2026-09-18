@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "check": "node --experimental-strip-types src/lib/commands.check.ts",
-    "reference": "vite --port 5174 --open /reference.html"
+    "check": "node --experimental-strip-types src/lib/commands.check.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
