@@ -34,3 +34,7 @@ server/          the Vite plugin that proxies Jev with the API key
 ```
 
 Stack: React 19, Vite, Tailwind 4, TypeScript.
+
+## Licence
+
+MIT. See [LICENSE](./LICENSE).
