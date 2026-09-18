@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Retro-Playful — Y2K poster-style UI.
+  Bright multi-hue palette over warm paper, chunky black-bordered shapes with
+  hard offset drop shadows, bold display type. Primary = saturated poster blue;
+  orange / yellow / green / pink ride along as badge variants + the chart ramp.
+*/
+
+:root {
+  /* Warm paper ground, near-black ink */
+  --background: oklch(0.957 0.035 92);
+  --foreground: oklch(0.2011 0.0146 271.15);
+
+  --card: oklch(0.988 0.014 92);
+  --card-foreground: oklch(0.2011 0.0146 271.15);
+
+  --popover: oklch(0.988 0.014 92);
+  --popover-foreground: oklch(0.2011 0.0146 271.15);
+
+  /* Poster blue — the dominant brand hue from the source */
+  --primary: oklch(0.6182 0.1842 256.39);
+  --primary-foreground: oklch(0.9929 0.0067 95.18);
+
+  /* Sky-tint panel — soft blue secondary surface */
+  --secondary: oklch(0.9219 0.0461 234.71);
+  --secondary-foreground: oklch(0.2011 0.0146 271.15);
+
+  --muted: oklch(0.928 0.03 92);
+  --muted-foreground: oklch(0.4511 0.0212 271.15);
+
+  /* Warm sunbeam yellow accent */
+  --accent: oklch(0.9114 0.1568 99.61);
+  --accent-foreground: oklch(0.2011 0.0146 271.15);
+
+  --destructive: oklch(0.6045 0.2261 27.32);
+  --destructive-foreground: oklch(0.9929 0.0067 95.18);
+
+  /* Chunky ink borders — the retro outline material */
+  --border: oklch(0.2011 0.0146 271.15);
+  --input: oklch(0.2011 0.0146 271.15);
+  --ring: oklch(0.6182 0.1842 256.39);
+
+  /* Chunkier corners for the poster look */
+  --radius: 0.875rem;
+
+  /* ─── Hard offset shadows: the retro/neo-brutalist signature material.
+     A solid ink slab with NO blur, offset down-right. Scaled stops so small
+     controls (sm) and raised panels (lg) all share the same recipe. ─── */
+  --shadow-hard-sm: 2px 2px 0 0 var(--foreground);
+  --shadow-hard: 4px 4px 0 0 var(--foreground);
+  --shadow-hard-lg: 6px 6px 0 0 var(--foreground);
+
+  /* ─── Chart palette: the full poster multi-hue set, not a single ramp ─── */
+  --chart-1: oklch(0.6182 0.1842 256.39); /* blue */
+  --chart-2: oklch(0.7041 0.1885 47.62); /* orange */
+  --chart-3: oklch(0.9114 0.1568 99.61); /* yellow */
+  --chart-4: oklch(0.6889 0.1644 152.71); /* green */
+  --chart-5: oklch(0.6921 0.1789 4.21); /* pink */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    font-family: "Archivo", var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Chunky confident display type for headings */
+  :is(h1, h2, h3, h4, h5, h6) {
+    font-family: "Archivo Black", "Archivo", var(--font-geist-sans), sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+  /* stylelint-disable-next-line selector-no-vendor-prefix */
+  ::-moz-selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  /* Let textareas grow with their content instead of nested scrolling. */
+  textarea {
+    resize: vertical;
+  }
+  @supports (field-sizing: content) {
+    textarea {
+      field-sizing: content;
+      max-height: 20lh;
+      overflow-y: auto;
+    }
+  }
+
+  /* Reserve the scrollbar gutter so the page keeps its width whenever the
+     scrollbar comes and goes: content loading in, moving between a short
+     and a tall page, or a scroll lock that just hides overflow. */
+  html {
+    scrollbar-gutter: stable;
+  }
+  @supports (scrollbar-gutter: stable) {
+    html body[data-scroll-locked] {
+      /* Radix's scroll lock re-adds the scrollbar width as body margin. The
+         stable gutter already reserves it, so without this the two stack and
+         opening a dialog shifts the page the other way. */
+      margin-right: 0 !important;
+    }
+  }
+}

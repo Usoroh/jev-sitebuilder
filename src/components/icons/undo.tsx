@@ -1,0 +1,14 @@
+// From Pixelarticons — used via Iconify (https://iconify.design)
+import type { SVGProps } from "react";
+
+export function UndoIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path fill="currentColor" d="M18 20h-6v-2h6zm2-2h-2v-8h2zm-10-4H8v-2H6v-2H4V8h2V6h2V4h2v4h8v2h-8z"/>
+    </svg>
+  );
+}

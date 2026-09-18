@@ -1,0 +1,26 @@
+{
+  "library": "pixelarticons",
+  "prefix": "pixelarticons",
+  "source": "iconify",
+  "installedAt": "2026-09-18T14:44:27.857Z",
+  "icons": [
+    "arrow-right",
+    "audio-waveform",
+    "check",
+    "close",
+    "code",
+    "github",
+    "globe",
+    "linkedin",
+    "mail",
+    "mic",
+    "plus",
+    "quote-text-inline",
+    "shield",
+    "sparkles",
+    "square-cursor",
+    "trash",
+    "undo",
+    "zap"
+  ]
+}
